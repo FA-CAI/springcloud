@@ -1,0 +1,44 @@
+
+server:
+  port: 8082
+spring:
+  application:
+    name: cloud-client
+eureka:
+  client:
+    registerWithEureka: false   #试试 debug报错Cannot execute request on any known server
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://user:123456@localhost:8080/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+#ribbon:
+ # okhttp:
+  #  enabled: true
+  #restclient:
+   # enabled: true
+  #eureka:
+   # enabled: true
+
+#hystrix:
+ # command:
+  #  default:
+   #   execution:
+    #    isolation:
+     #     thread:
+      #      timeoutInMilliseconds: 5000
+
+ribbon:
+  eureka:
+    enabled: false
+cloud-provider:
+  ribbon:
+    listOfServers: http://localhost:8081
